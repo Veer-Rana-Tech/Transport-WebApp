@@ -3,18 +3,20 @@ require('dotenv').config();
 
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
+    port: parseInt(process.env.DB_PORT) || 3306,
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'ek_transport',
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    ssl: {
+        rejectUnauthorized: false
+    }
 };
 
-// Create connection pool
 const pool = mysql.createPool(dbConfig);
 
-// Test database connection
 const testConnection = async () => {
     try {
         const connection = await pool.getConnection();
@@ -27,21 +29,8 @@ const testConnection = async () => {
     }
 };
 
-// Initialize database and tables
 const initializeDatabase = async () => {
     try {
-        // Create database if not exists
-        const tempConnection = await mysql.createConnection({
-            host: dbConfig.host,
-            user: dbConfig.user,
-            password: dbConfig.password
-        });
-
-        await tempConnection.execute(`CREATE DATABASE IF NOT EXISTS \`${dbConfig.database}\``);
-        console.log(`✅ Database '${dbConfig.database}' ready`);
-        await tempConnection.end();
-
-        // Create applications table
         const createApplicationsTable = `
             CREATE TABLE IF NOT EXISTS applications (
                 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -55,7 +44,7 @@ const initializeDatabase = async () => {
                 license_type ENUM('LMV', 'HMV', 'MCWG', 'MCG', 'international') NOT NULL,
                 vehicle_type ENUM('car', 'truck', 'bus', 'all', '') DEFAULT NULL,
                 availability ENUM('immediate', '1week', '2weeks', '1month') NOT NULL,
-                preferred_locations JSON NOT NULL,
+                preferred_locations TEXT NOT NULL,
                 license_filename VARCHAR(255),
                 license_filepath VARCHAR(500),
                 photo_filename VARCHAR(255),
@@ -64,7 +53,7 @@ const initializeDatabase = async () => {
                 address_filepath VARCHAR(500),
                 additional_info TEXT,
                 status ENUM('submitted', 'document_verified', 'background_check', 'interview_scheduled', 'approved', 'rejected') DEFAULT 'submitted',
-                status_history JSON,
+                status_history TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 INDEX idx_tracking_id (tracking_id),
@@ -73,11 +62,9 @@ const initializeDatabase = async () => {
                 INDEX idx_created_at (created_at)
             )
         `;
-
         await pool.execute(createApplicationsTable);
-        console.log('✅ Applications table created/verified');
+        console.log('✅ Applications table ready');
 
-        // Create application_status_history table
         const createStatusHistoryTable = `
             CREATE TABLE IF NOT EXISTS application_status_history (
                 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -90,9 +77,23 @@ const initializeDatabase = async () => {
                 INDEX idx_created_at (created_at)
             )
         `;
-
         await pool.execute(createStatusHistoryTable);
-        console.log('✅ Application status history table created/verified');
+        console.log('✅ Status history table ready');
+
+        const createAdminTable = `
+            CREATE TABLE IF NOT EXISTS admin_users (
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                name VARCHAR(255) NOT NULL,
+                email VARCHAR(255) UNIQUE NOT NULL,
+                phone VARCHAR(20),
+                password VARCHAR(255) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                INDEX idx_email (email)
+            )
+        `;
+        await pool.execute(createAdminTable);
+        console.log('✅ Admin users table ready');
 
     } catch (error) {
         console.error('❌ Database initialization failed:', error.message);
