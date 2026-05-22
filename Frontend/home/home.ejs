@@ -1,0 +1,428 @@
+<% let content=` <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 class="animate__animated animate__fadeInDown">Drive Your Career Forward with Ek Transport</h1>
+            <p class="animate__animated animate__fadeInUp">Join India's leading transport company with opportunities
+                across all states. Competitive salaries, benefits, and growth opportunities await professional drivers.
+            </p>
+            <div class="hero-buttons animate__animated animate__fadeInUp">
+                <a href="#apply" class="btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                <a href="#tracking" class="btn btn-outline">Track Application</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Ek Transporter?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Nationwide Opportunities</h3>
+                    <p>Job openings available across all Indian states with location preferences and relocation
+                        assistance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>Easy Application Process</h3>
+                    <p>Simple online form with document upload and real-time tracking of your application status.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Application Tracking</h3>
+                    <p>Track your application status with email and SMS notifications at every step of the process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Competitive Benefits</h3>
+                    <p>Attractive salary packages, insurance, bonuses, and performance incentives for all drivers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="15102">0</div>
+                    <div class="stat-label">Professional Drivers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="28">0</div>
+                    <div class="stat-label">States Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="95">0</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Application Form -->
+    <section class="section" id="apply">
+        <div class="container">
+            <h2 class="section-title">Driver Job Application</h2>
+            <div class="job-form-container">
+                <div id="form-success" class="success-message hidden">
+                    <h3><i class="fas fa-check-circle"></i> Application Submitted Successfully!</h3>
+                    <p>Thank you for applying to Ek Transporter. We have sent a confirmation email to your registered
+                        email address. You can track your application using the tracking ID: <strong
+                            id="generated-tracking-id">ET2023001</strong></p>
+                    
+                </div>
+
+                <form id="driver-form">
+                    <div class="form-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="form-progress-fill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <span class="progress-step active" data-step="1">Personal Info</span>
+                            <span class="progress-step" data-step="2">Experience</span>
+                            <span class="progress-step" data-step="3">Documents</span>
+                        </div>
+                    </div>
+
+                    <div class="form-step active" id="step-1">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" class="form-control" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth *</label>
+                                <input type="date" id="dob" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Current Address *</label>
+                            <textarea id="address" class="form-control" rows="3"
+                                placeholder="Enter your current address" required></textarea>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline next-step" data-next="2">Next <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-2">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="experience">Driving Experience (Years) *</label>
+                                <input type="number" id="experience" class="form-control" min="0"
+                                    placeholder="Years of experience" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="licenseType">License Type *</label>
+                                <select id="licenseType" class="form-control" required>
+                                    <option value="">Select License Type</option>
+                                    <option value="LMV">LMV (Light Motor Vehicle)</option>
+                                    <option value="HMV">HMV (Heavy Motor Vehicle)</option>
+                                    <option value="MCWG">MCWG (Motorcycle Without Gear)</option>
+                                    <option value="MCG">MCG (Motorcycle With Gear)</option>
+                                    <option value="international">International Driving Permit</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehicleType">Preferred Vehicle Type</label>
+                                <select id="vehicleType" class="form-control">
+                                    <option value="">Select Vehicle Type</option>
+                                    <option value="car">Car / Light Vehicle</option>
+                                    <option value="truck">Truck / Heavy Vehicle</option>
+                                    <option value="bus">Bus</option>
+                                    <option value="all">Any Vehicle Type</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="availability">Availability to Join *</label>
+                                <select id="availability" class="form-control" required>
+                                    <option value="">Select Availability</option>
+                                    <option value="immediate">Immediately</option>
+                                    <option value="1week">Within 1 Week</option>
+                                    <option value="2weeks">Within 2 Weeks</option>
+                                    <option value="1month">Within 1 Month</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Preferred Job Locations *</label>
+                            <p class="mb-4">Select one or more preferred locations for your job placement</p>
+                            <div class="states-grid">
+                                <div class="state-item">Andhra Pradesh</div>
+                                <div class="state-item">Arunachal Pradesh</div>
+                                <div class="state-item">Assam</div>
+                                <div class="state-item">Bihar</div>
+                                <div class="state-item">Chhattisgarh</div>
+                                <div class="state-item">Delhi</div>
+                                <div class="state-item">Goa</div>
+                                <div class="state-item">Gujarat</div>
+                                <div class="state-item">Haryana</div>
+                                <div class="state-item">Himachal Pradesh</div>
+                                <div class="state-item">Jharkhand</div>
+                                <div class="state-item">Karnataka</div>
+                                <div class="state-item">Kerala</div>
+                                <div class="state-item">Madhya Pradesh</div>
+                                <div class="state-item">Maharashtra</div>
+                                <div class="state-item">Manipur</div>
+                                <div class="state-item">Meghalaya</div>
+                                <div class="state-item">Mizoram</div>
+                                <div class="state-item">Nagaland</div>
+                                <div class="state-item">Odisha</div>
+                                <div class="state-item">Punjab</div>
+                                <div class="state-item">Rajasthan</div>
+                                <div class="state-item">Sikkim</div>
+                                <div class="state-item">Tamil Nadu</div>
+                                <div class="state-item">Telangana</div>
+                                <div class="state-item">Tripura</div>
+                                <div class="state-item">Uttar Pradesh</div>
+                                <div class="state-item">Uttarakhand</div>
+                                <div class="state-item">West Bengal</div>
+                                <div class="state-item">Andaman and Nicobar Islands</div>
+                                <div class="state-item">Chandigarh</div>
+                                <div class="state-item">Dadra and Nagar Haveli and Daman and Diu</div>
+                                <div class="state-item">Jammu and Kashmir</div>
+                                <div class="state-item">Ladakh</div>
+                                <div class="state-item">Lakshadweep</div>
+                                <div class="state-item">Puducherry</div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="1"><i
+                                    class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="btn btn-outline next-step" data-next="3">Next <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="form-step" id="step-3">
+                        <div class="form-group">
+                            <label>Upload Documents *</label>
+                            <p class="mb-4">Please upload clear scans/photos of your documents (Min 1 MB - Max 10MB
+                                each)</p>
+
+                            <div class="file-upload-container">
+                                <div class="file-upload" id="licenseUpload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload Front Page Of Driving License</p>
+                                    <div class="file-name" id="licenseFileName"></div>
+                                    <input type="file" id="licenseFile" style="display: none;" accept="image/*,.pdf">
+                                </div>
+
+                                <div class="file-upload" id="photoUpload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload Back Page Of Driving License</p>
+                                    <div class="file-name" id="photoFileName"></div>
+                                    <input type="file" id="photoFile" style="display: none;" accept="image/*">
+                                </div>
+
+                                <div class="file-upload" id="addressUpload">
+                                    <i class="fas fa-file-alt"></i>
+                                    <p>Click to upload Address Proof Voter Card , Residential Permit </p>
+                                    <div class="file-name" id="addressFileName"></div>
+                                    <input type="file" id="addressFile" style="display: none;" accept="image/*,.pdf">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" class="form-control" rows="4"
+                                placeholder="Any additional details about your experience, certifications, or preferences..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">I agree to the <a href="#" class="link">Terms and Conditions</a> and
+                                    <a href="#" class="link">Privacy Policy</a> *</label>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="2"><i
+                                    class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Submit Application
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Tracking -->
+    <section class="section" id="tracking">
+        <div class="container">
+            <h2 class="section-title">Track Your Application</h2>
+            <div class="tracking-section">
+                <div class="tracking-form">
+                    <input type="text" id="trackingId" placeholder="Enter your Application ID (e.g., ET2023001)"
+                        class="form-control">
+                    <button class="btn btn-primary" id="trackBtn">
+                        <i class="fas fa-search"></i> Track
+                    </button>
+                </div>
+
+                <div id="tracking-result" class="hidden">
+                    <div class="application-summary">
+                        <h3>Application Summary</h3>
+                        <div class="summary-details">
+                            <div class="summary-item">
+                                <span class="summary-label">Applicant Name:</span>
+                                <span class="summary-value" id="summary-name">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Application ID:</span>
+                                <span class="summary-value" id="summary-id">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Applied Position:</span>
+                                <span class="summary-value" id="summary-position">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Application Date:</span>
+                                <span class="summary-value" id="summary-date">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-timeline">
+                        <div class="status-item completed">
+                            <h4>Application Submitted</h4>
+                            <span class="status-date">15 October 2023</span>
+                            <p>Your application has been successfully submitted and is under review.</p>
+                        </div>
+                        <div class="status-item completed">
+                            <h4>Document Verification</h4>
+                            <span class="status-date">18 October 2023</span>
+                            <p>Your documents have been verified successfully. All documents are in order.</p>
+                        </div>
+                        <div class="status-item active">
+                            <h4>Background Check</h4>
+                            <span class="status-date">In Progress</span>
+                            <p>We are currently conducting background verification. This process typically takes 3-5
+                                business days.</p>
+                        </div>
+                        <div class="status-item">
+                            <h4>Interview Scheduled</h4>
+                            <span class="status-date">Pending</span>
+                            <p>Interview will be scheduled after successful background verification. You will receive
+                                details via email and SMS.</p>
+                        </div>
+                        <div class="status-item">
+                            <h4>Final Decision</h4>
+                            <span class="status-date">Pending</span>
+                            <p>Final decision will be communicated within 48 hours after the interview process.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tracking-error" class="error-message hidden">
+                    <h3><i class="fas fa-exclamation-circle"></i> Application Not Found</h3>
+                    <p>We couldn't find an application with the provided ID. Please check your Application ID and try
+                        again.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Drivers Say</h2>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Ek Transporter gave me the opportunity to work close to my hometown with a good salary. The
+                            support team is always available to help with any issues."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-details">
+                            <h4>Rajesh Kumar</h4>
+                            <span>Heavy Vehicle Driver, 3 years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"I've been driving for Ek Transporter for over 5 years now. The company takes good care of
+                            its drivers with timely payments and insurance benefits."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-details">
+                            <h4>Sanjay Patel</h4>
+                            <span>Interstate Truck Driver, 5 years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The application process was smooth, and I got my first assignment within a week. The mobile
+                            app makes it easy to track my schedules and payments."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-details">
+                            <h4>Priya Sharma</h4>
+                            <span>City Transporter Driver, 1 year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+    %>
+
+    <%- include('../base', { title: 'Ek Transport - Professional Driver Job Portal' , page: 'home' , content: content })
+        %>

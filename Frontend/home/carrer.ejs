@@ -1,0 +1,377 @@
+<% 
+let carrierContent = `
+    <!-- Carrier Hero Section -->
+    <section class="carrier-hero" id="carrier">
+        <div class="container">
+            <div class="carrier-hero-content">
+                <h1 class="animate__animated animate__fadeInDown">Join Our Carrier Network</h1>
+                <p class="animate__animated animate__fadeInUp">Partner with Ek Transport - India's trusted logistics partner. Grow your business with consistent loads, timely payments, and professional support.</p>
+                <div class="hero-buttons">
+                    <a href="#register" class="btn btn-primary">Register as Carrier</a>
+                    <a href="#benefits" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Partner With Us -->
+    <section class="section why-partner-section">
+        <div class="container">
+            <h2 class="section-title">Why Partner With Ek Transport?</h2>
+            <div class="partner-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Competitive Rates</h3>
+                    <p>Get the best market rates with transparent pricing and regular rate revisions based on market trends.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Timely Payments</h3>
+                    <p>Guaranteed weekly payments through multiple payment options. No delays, no excuses.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Regular Loads</h3>
+                    <p>Consistent freight opportunities across India with optimized routes and back-to-back loads.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Insurance Support</h3>
+                    <p>Comprehensive cargo insurance coverage and support for claim settlements.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock operational support and emergency assistance for all your needs.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Growth</h3>
+                    <p>Access to larger clients, premium contracts, and opportunities to expand your fleet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrier Requirements -->
+    <section class="section requirements-section">
+        <div class="container">
+            <h2 class="section-title">Carrier Requirements</h2>
+            <div class="requirements-grid">
+                
+                <div class="requirement-category">
+                    <h3><i class="fas fa-truck"></i> For Vehicle Requirements</h3>
+                    <ul>
+                        <li>Valid Fitness Certificate</li>
+                        <li>Vehicle Registration Certificate</li>
+                        <li>Insurance Documents</li>
+                        <li>Pollution Under Control Certificate</li>
+                        <li>National Permit (if applicable)</li>
+                    </ul>
+                </div>
+                <div class="requirement-category">
+                    <h3><i class="fas fa-user-check"></i> For Driver Requirements</h3>
+                    <ul>
+                        <li>Valid Commercial Driving License</li>
+                        <li>Experience Certificate</li>
+                        <li>Medical Fitness Certificate</li>
+                        <li>Background Check</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Types We Work With -->
+    <section class="section vehicle-types-section">
+        <div class="container">
+            <h2 class="section-title">Vehicle Types We Work With</h2>
+            <div class="vehicle-types-grid">
+                <div class="vehicle-type-card">
+                    <div class="vehicle-icon">
+                        <i class="fas fa-truck-pickup"></i>
+                    </div>
+                    <h3>Light Commercial Vehicles</h3>
+                    <ul>
+                        <li>Tata Ace</li>
+                        <li>Mahindra Bolero</li>
+                        <li>Pickup Vans</li>
+                        <li>Capacity: 1-2 Tons</li>
+                    </ul>
+                </div>
+                <div class="vehicle-type-card">
+                    <div class="vehicle-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Medium Trucks</h3>
+                    <ul>
+                        <li>Tata 407</li>
+                        <li>Eicher Pro</li>
+                        <li>Ashok Leyland</li>
+                        <li>Capacity: 4-8 Tons</li>
+                    </ul>
+                </div>
+                <div class="vehicle-type-card">
+                    <div class="vehicle-icon">
+                        <i class="fas fa-truck-moving"></i>
+                    </div>
+                    <h3>Heavy Trucks</h3>
+                    <ul>
+                        <li>Multi-axle Trucks</li>
+                        <li>Trailers</li>
+                        <li>Container Carriers</li>
+                        <li>Capacity: 16-40 Tons</li>
+                    </ul>
+                </div>
+                <div class="vehicle-type-card">
+                    <div class="vehicle-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3>Specialized Vehicles</h3>
+                    <ul>
+                        <li>Refrigerated Trucks</li>
+                        <li>Tankers</li>
+                        <li>Flatbeds</li>
+                        <li>Car Carriers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Process -->
+    <section class="section registration-process" id="register">
+        <div class="container">
+            <h2 class="section-title">Simple Registration Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Online Application</h3>
+                        <p>Fill our simple online registration form with basic details</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Document Verification</h3>
+                        <p>Submit required documents for verification</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Vehicle Inspection</h3>
+                        <p>Quick physical verification of your vehicle(s)</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Onboarding</h3>
+                        <p>Complete orientation and start receiving loads</p>
+                    </div>
+                </div>
+            </div>
+            <div class="registration-cta">
+                <a href="#register-form" class="btn btn-large">Start Registration</a>
+                <p>Complete registration in less than 48 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Information -->
+    <section class="section payment-section">
+        <div class="container">
+            <h2 class="section-title">Transparent Payment System</h2>
+            <div class="payment-info">
+                <div class="payment-features">
+                    <div class="payment-feature">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <h3>Weekly Payments</h3>
+                            <p>Every Friday without fail</p>
+                        </div>
+                    </div>
+                    <div class="payment-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <h3>Multiple Payment Options</h3>
+                            <p>NEFT, IMPS, UPI, Cheque</p>
+                        </div>
+                    </div>
+                    <div class="payment-feature">
+                        <i class="fas fa-file-invoice"></i>
+                        <div>
+                            <h3>Digital Invoicing</h3>
+                            <p>Automated invoice generation</p>
+                        </div>
+                    </div>
+                    <div class="payment-feature">
+                        <i class="fas fa-chart-bar"></i>
+                        <div>
+                            <h3>Payment Analytics</h3>
+                            <p>Real-time payment tracking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-stats">
+                    <div class="payment-stat">
+                        <div class="stat-number">24-48</div>
+                        <div class="stat-label">Hours Payment Processing</div>
+                    </div>
+                    <div class="payment-stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Payment Transparency</div>
+                    </div>
+                    <div class="payment-stat">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Payment Delays</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Support -->
+    <section class="section technology-section">
+        <div class="container">
+            <h2 class="section-title">Technology & Support</h2>
+            <div class="tech-features">
+                <div class="tech-feature">
+                    <div class="tech-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Carrier App</h3>
+                    <p>Dedicated mobile app for load booking, tracking, and payments</p>
+                </div>
+                <div class="tech-feature">
+                    <div class="tech-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Route Optimization</h3>
+                    <p>Smart route planning to maximize earnings and reduce empty runs</p>
+                </div>
+                <div class="tech-feature">
+                    <div class="tech-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Digital Payments</h3>
+                    <p>Instant payment tracking and digital receipts</p>
+                </div>
+                <div class="tech-feature">
+                    <div class="tech-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Dedicated Support</h3>
+                    <p>Personal relationship manager for each carrier</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Carriers Say</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Partnering with Ek Transport transformed my business. Regular payments and consistent loads have helped me expand my fleet from 2 to 8 trucks."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Rajesh Kumar</strong>
+                        <span>Fleet Owner, Delhi</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The transparency in operations and timely support makes Ek Transport the best partner I've worked with in 15 years of being in this business."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Priya Sharma</strong>
+                        <span>Transport Contractor, Mumbai</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Their technology platform makes everything so easy - from booking loads to tracking payments. It's like having a personal manager 24/7."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>Arun Mehta</strong>
+                        <span>Logistics Provider, Bangalore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>How quickly can I start getting loads after registration?</h3>
+                    <p>Once your registration and document verification is complete (usually within 48 hours), you can start receiving loads immediately.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>What are the payment terms?</h3>
+                    <p>We process payments every Friday for all completed trips from the previous week. Payments are made through NEFT/IMPS/UPI.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is there any registration fee?</h3>
+                    <p>No, there is absolutely no registration fee. Our partnership is completely free of cost.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do you provide insurance for goods?</h3>
+                    <p>Yes, all goods transported through Ek Transport are covered under our comprehensive cargo insurance policy.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can small fleet owners register?</h3>
+                    <p>Absolutely! We work with individual truck owners as well as large fleet operators. Every partner is important to us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Contact CTA -->
+    <section class="section carrier-contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Have Questions? We're Here to Help!</h2>
+                <p>Contact our carrier relations team for any queries or support</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>carriers@ektransporter.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Sun: 6:00 AM - 11:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+`;
+%>
+
+<%- include('../base', {
+    title: 'Carrier Partnership - Ek Transporter',
+    page: 'carrier',
+    content: carrierContent
+}) %>
