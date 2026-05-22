@@ -2,6 +2,7 @@
   "name": "transport-webapp",
   "version": "1.0.0",
   "scripts": {
-    "start": "node Backend/server.js"
+    "start": "node Backend/server.js",
+    "postinstall": "cd Backend && npm install"
   }
 }
