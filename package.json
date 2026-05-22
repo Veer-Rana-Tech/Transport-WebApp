@@ -1,0 +1,7 @@
+{
+  "name": "transport-webapp",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node Backend/server.js"
+  }
+}
