@@ -1,11 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
 require('dotenv').config();
 
 const { testConnection, initializeDatabase } = require('./config/database');
-const { authMiddleware, dashboardAuthMiddleware } = require('./middleware/authMiddleware'); // Updated import
+const { dashboardAuthMiddleware } = require('./middleware/authMiddleware');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,113 +17,129 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
-// Handle preflight requests
 app.options('*', cors());
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Set EJS as template engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../Frontend'));
+// ============================
+// EJS TEMPLATE ENGINE
+// ============================
 
-// Serve static files (uploads)
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'Frontend'));
+
+// ============================
+// STATIC FILES
+// ============================
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Serve static files (CSS, JS, images)
-app.use('/css', express.static(path.join(__dirname, '../Frontend/css')));
-app.use('/js', express.static(path.join(__dirname, '../Frontend/js')));
-app.use('/images', express.static(path.join(__dirname, '../Frontend/images')));
+app.use('/css', express.static(path.join(__dirname, 'Frontend/css')));
+app.use('/js', express.static(path.join(__dirname, 'Frontend/js')));
+app.use('/images', express.static(path.join(__dirname, 'Frontend/images')));
 
-// Import routes
+// ============================
+// IMPORT ROUTES
+// ============================
+
 const applicationRoutes = require('./routes/applicationRoutes');
 const trackingRoutes = require('./routes/trackingRoutes');
-const { authRoutes, verifyToken } = require('./routes/authRoutes');
+const { authRoutes } = require('./routes/authRoutes');
 
-// Routes
+// ============================
+// API ROUTES
+// ============================
+
 app.use('/api/auth', authRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/track', trackingRoutes);
 
-// Home route - render template
+// ============================
+// PAGE ROUTES
+// ============================
+
 app.get('/', (req, res) => {
-    res.render('home/home', { 
+    res.render('home/home', {
         title: 'Ek Transport - Professional Driver Job Portal',
         page: 'home'
     });
 });
 
-// About route
 app.get('/about', (req, res) => {
-    res.render('home/about', { 
+    res.render('home/about', {
         title: 'About Us - Ek Transport',
         page: 'about'
     });
 });
 
-// Career route 
 app.get('/carrer', (req, res) => {
-    res.render('home/carrer', { 
+    res.render('home/carrer', {
         title: 'Careers - Ek Transport',
         page: 'career'
     });
 });
 
-// Login route 
 app.get('/login', (req, res) => {
-    res.render('home/login', { 
+    res.render('home/login', {
         title: 'Login - Ek Transport',
         page: 'login'
     });
 });
 
-// Dashboard route (protected) - USING UPDATED MIDDLEWARE
 app.get('/dashboard', dashboardAuthMiddleware, (req, res) => {
-    console.log('🎯 Rendering dashboard for:', req.admin.email);
-    res.render('home/dashboard', { 
+    res.render('home/dashboard', {
         title: 'Dashboard - Ek Transport',
         page: 'dashboard',
         admin: req.admin,
-        token: req.token // Pass token to client for API calls
+        token: req.token
     });
 });
 
-// Public tracking page
 app.get('/tracking', (req, res) => {
-    res.render('home/tracking', { 
+    res.render('home/tracking', {
         title: 'Track Application - Ek Transport',
         page: 'tracking'
     });
 });
 
-// Health check route
-app.get('/api/health', (req, res) => {
-    res.json({ 
-        success: true, 
-        message: 'Ek Transport Backend is running',
-        timestamp: new Date().toISOString()
-    });
-});
-
-// Public application submission page
 app.get('/apply', (req, res) => {
-    res.render('home/apply', { 
+    res.render('home/apply', {
         title: 'Apply as Driver - Ek Transport',
         page: 'apply'
     });
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Server error:', err);
-    res.status(500).json({
-        success: false,
-        message: 'Internal server error',
-        error: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
+// ============================
+// HEALTH CHECK
+// ============================
+
+app.get('/api/health', (req, res) => {
+    res.json({
+        success: true,
+        message: 'Ek Transport Backend is running',
+        timestamp: new Date().toISOString()
     });
 });
 
-// 404 handler for API routes
+// ============================
+// ERROR HANDLER
+// ============================
+
+app.use((err, req, res, next) => {
+    console.error('Server error:', err);
+
+    res.status(500).json({
+        success: false,
+        message: 'Internal server error',
+        error: err.message
+    });
+});
+
+// ============================
+// 404 API ROUTES
+// ============================
+
 app.use('/api/*', (req, res) => {
     res.status(404).json({
         success: false,
@@ -132,38 +147,47 @@ app.use('/api/*', (req, res) => {
     });
 });
 
-// 404 handler for pages
+// ============================
+// 404 PAGE ROUTES
+// ============================
+
 app.use('*', (req, res) => {
-    res.status(404).render('home/404', { 
+    res.status(404).render('home/404', {
         title: 'Page Not Found - Ek Transport',
         page: '404'
     });
 });
 
-// Start server
+// ============================
+// START SERVER
+// ============================
+
 const startServer = async () => {
     try {
-        // Test database connection
+
         const dbConnected = await testConnection();
-        
+
         if (!dbConnected) {
-            console.log('⚠️  Starting server without database connection...');
+            console.log('⚠️ Starting server without database connection...');
         } else {
-            // Initialize database tables
             await initializeDatabase();
         }
 
         app.listen(PORT, () => {
-            console.log(`🚀 Ek Transport Backend Server running on port ${PORT}`);
-            console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
-            console.log(`📱 Frontend: http://localhost:${PORT}`);
+
+            console.log(`🚀 Server running on port ${PORT}`);
+            console.log(`🌐 Frontend: http://localhost:${PORT}`);
             console.log(`📊 Dashboard: http://localhost:${PORT}/dashboard`);
             console.log(`🔐 Login: http://localhost:${PORT}/login`);
-            console.log(`🗄️  Database: ${dbConnected ? '✅ Connected' : '❌ Not connected'}`);
+            console.log(`🗄️ Database: ${dbConnected ? '✅ Connected' : '❌ Not connected'}`);
+
         });
+
     } catch (error) {
+
         console.error('❌ Failed to start server:', error);
         process.exit(1);
+
     }
 };
 
