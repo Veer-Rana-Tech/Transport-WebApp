@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 // ============================
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'Frontend'));
+app.set('views', path.join(__dirname, '../Frontend'));
 
 // ============================
 // STATIC FILES
@@ -35,9 +35,9 @@ app.set('views', path.join(__dirname, 'Frontend'));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use('/css', express.static(path.join(__dirname, 'Frontend/css')));
-app.use('/js', express.static(path.join(__dirname, 'Frontend/js')));
-app.use('/images', express.static(path.join(__dirname, 'Frontend/images')));
+app.use('/css', express.static(path.join(__dirname, '../Frontend/css')));
+app.use('/js', express.static(path.join(__dirname, '../Frontend/js')));
+app.use('/images', express.static(path.join(__dirname, '../Frontend/images')));
 
 // ============================
 // IMPORT ROUTES
